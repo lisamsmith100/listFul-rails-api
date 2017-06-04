@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 20170604022508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,54 @@ ActiveRecord::Schema.define(version: 2) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_examples_on_user_id", using: :btree
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.string   "list_item_name"
+    t.string   "list_item_category"
+    t.boolean  "list_item_status"
+    t.boolean  "list_item_reminder"
+    t.date     "list_item_reminder_date"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "list_id"
+    t.index ["list_id"], name: "index_list_items_on_list_id", using: :btree
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string   "list_name"
+    t.string   "list_category"
+    t.boolean  "list_status"
+    t.boolean  "list_reminder"
+    t.date     "list_reminder_date"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
+  end
+
+  create_table "template_items", force: :cascade do |t|
+    t.string   "template_item_name"
+    t.string   "template_item_category"
+    t.boolean  "template_item_status"
+    t.boolean  "template_item_reminder"
+    t.date     "template_item_reminder_date"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "template_id"
+    t.index ["template_id"], name: "index_template_items_on_template_id", using: :btree
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string   "template_name"
+    t.string   "template_category"
+    t.boolean  "template_status"
+    t.boolean  "template_reminder"
+    t.date     "template_reminder_date"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_templates_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +82,8 @@ ActiveRecord::Schema.define(version: 2) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "list_items", "lists"
+  add_foreign_key "lists", "users"
+  add_foreign_key "template_items", "templates"
+  add_foreign_key "templates", "users"
 end
