@@ -1,5 +1,5 @@
 #!/bin/bash
-#TOKEN=BAhJIiUzZDMxMzgyM2I1Mjk4MzE3NDM5OTA0YTJhODk0Y2QwMgY6BkVG--3a378c6c028678cc06027b781bcb735c4098a95c LIST_NAME="first list for user lms" LIST_CATEGORY="WDI" sh scripts/lists/create-list.sh
+#TOKEN=BAhJIiVjYmQxMDljMTcxZGM0NTNhMGNmNmZhM2E1OGZiMGRmMgY6BkVG--db9c97508cccc65ec1c4bac1c0c1cdbc1d1609a0 LIST_NAME="ninth list for user lms" LIST_CATEGORY="WDI" LIST_STATUS=false LIST_REMINDER=true LIST_REMINDER_DATE="2017-06-09" sh scripts/lists/create-list.sh
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/lists"

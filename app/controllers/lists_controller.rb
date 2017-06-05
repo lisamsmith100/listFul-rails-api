@@ -51,7 +51,6 @@ class ListsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:list_name, :list_category, :list_status)
-      # , :list_reminder, :list_reminder_date
+      params.require(:list).permit(:list_name, :list_category, :list_status, :list_reminder, :list_reminder_date)
     end
 end
