@@ -12,8 +12,8 @@ class ListsController < ProtectedController
 
   # GET /lists/1
   def show
-    @list = current_user.list.find(params[:id])
-    render json: @list
+    @lists = current_user.lists.find(params[:id])
+    render json: @lists
   end
 
   # POST /lists
