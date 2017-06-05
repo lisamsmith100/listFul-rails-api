@@ -11,7 +11,7 @@ class ListItemsController < ProtectedController
 
   # GET /list_items/1
   def show
-    @list_items = current_user.list_items.all
+    @list_items = current_user.list_items.find(params[:id])
     render json: @list_items
   end
 
