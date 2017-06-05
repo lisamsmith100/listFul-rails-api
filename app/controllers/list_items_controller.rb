@@ -11,13 +11,13 @@ class ListItemsController < ProtectedController
 
   # GET /list_items/1
   def show
-    @list_item = current_user.list_item.all
-    render json: @list_item
+    @list_items = current_user.list_items.all
+    render json: @list_items
   end
 
   # POST /list_items
   def create
-    @list_item = current_user.list_item.build(entry_params)
+    @list_item = current_user.list_items.build(list_item_params)
 
     if @list_item.save
       render json: @list_item, status: :created, location: @list_item
@@ -50,6 +50,6 @@ class ListItemsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def list_item_params
-      params.require(:list_item, :list_item_name).permit(:list_item_name, :list_item_category, :list_item_status, :list_item_reminder, :list_item_reminder_date)
+      params.require(:list_item).permit(:list_item_name, :list_item_category, :list_item_status, :list_item_reminder, :list_item_reminder_date)
     end
 end

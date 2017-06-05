@@ -11,13 +11,13 @@ class TemplatesController < ProtectedController
 
   # GET /templates/1
   def show
-    @template = current_user.templates.find(params[:id])
-    render json: @template
+    @templates = current_user.templates.find(params[:id])
+    render json: @templates
   end
 
   # POST /templates
   def create
-    @template = current_user.templates.build(entry_params)
+    @template = current_user.templates.build(template_params)
 
     if @template.save
       render json: @template, status: :created, location: @template
@@ -50,6 +50,6 @@ class TemplatesController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def template_params
-      params.require(:template, :template_name).permit(:template_name, :template_category, :template_status, :template_reminder, :template_reminder_date)
+      params.require(:template).permit(:template_name, :template_category, :template_status, :template_reminder, :template_reminder_date)
     end
 end
