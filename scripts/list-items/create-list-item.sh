@@ -1,8 +1,10 @@
 #!/bin/bash
-#TOKEN=BAhJIiVjYzJmOWUwZDVlM2Y5NzI0MWI3NWNmYTk2NjBkMDI4YwY6BkVG--cb358f094a7674b629346e0bf31a34b598e18799 LIST_ITEM_NAME="first list item for first list for user lms" LIST_ITEM_STATUS=false LIST_ITEM_REMINDER=true LIST_ITEM_REMINDER_DATE="2017-06-09" LIST_ID=2 sh scripts/list-items/create-list-item.sh
+#LIST_ID=9 TOKEN=BAhJIiUxZmY2YzNlZjAyYmRiNzk5ZjRjZmU1OTcyYjczMmUwNAY6BkVG--e8d0602d168324ee35bb26a1b0a344a3c2a267e1 LIST_ITEM_NAME="first list item for first list for user lms" LIST_ITEM_STATUS=false LIST_ITEM_REMINDER=true LIST_ITEM_REMINDER_DATE="2017-06-09" sh scripts/list-items/create-list-item.sh
+
+#sh scripts/list-items/create-list-item.sh
 
 API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/list_items"
+URL_PATH="/lists/${LIST_ID}/list_items"
 curl "${API}${URL_PATH}" \
   --include \
   --request POST \
@@ -13,12 +15,14 @@ curl "${API}${URL_PATH}" \
       "list_item_name": "'"${LIST_ITEM_NAME}"'",
       "list_item_status": "'"${LIST_ITEM_STATUS}"'",
       "list_item_reminder": "'"${LIST_ITEM_REMINDER}"'",
-      "list_item_reminder_date": "'"${LIST_ITEM_REMINDER_DATE}"'",
-      "list_id": "'"${LIST_ID}"'"
+      "list_item_reminder_date": "'"${LIST_ITEM_REMINDER_DATE}"'"
     }
   }'
 
 echo
+# URL_PATH="/lists/id=$ID/list_items"
+# # URL_PATH="/lists/:list_id/list_items"
+# URL_PATH="/lists/{$ID}/list_items"
 
 
 # curl --include --request POST http://localhost:4741/entries \

@@ -12,6 +12,10 @@
 
   listFul is built using javascript, Handlebars, HTML, and CSS and relies on a Rails API/Postgres to persist data. Code for that API can be found at lisamsmith100/listFul-rails-api](<https://github.com/lisamsmith100/listFul-rails-api>).
 
+  ## Project Planning
+
+  [project plan](link goes here)
+
   ## User Stories
 
   As as user,…
@@ -54,7 +58,10 @@
   - Templates
   - Template Items
 
-  The project culminated from my wish to have an app with this functionality. The wireframes looks like this: [here](http://imgur.com/BiEzJn2).
+  ### Wireframes
+
+  [Original Wireframe](http://imgur.com/a/G4Gr3)
+  The project culminated from my wish to have an app with this functionality.
 
   ## Dependencies
 

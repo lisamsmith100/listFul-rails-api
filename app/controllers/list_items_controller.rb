@@ -1,26 +1,28 @@
 # frozen_string_literal: true
+require 'pry'
 
+# ListItemsController Class
 class ListItemsController < ProtectedController
-  before_action :set_list_item, only: [:show, :update, :destroy]
+  before_action :set_list
+  before_action :set_list_item, only: %i[show update destroy]
 
   # GET /list_items
   def index
-    @list_items = current_user.list_items.all
+    @list_items = @list.list_items.all
     render json: @list_items
   end
 
   # GET /list_items/1
   def show
-    @list_items = current_user.list_items.find(params[:id])
-    render json: @list_items
+    # @list_item = @list.list_items.find(params[:id])
+    render json: @list_item
   end
 
-  # POST /list_items
+  # POST list_items
   def create
-    @list_item = current_user.list_items.build(list_item_params)
-
+    @list_item = @list.list_items.build(list_item_params)
     if @list_item.save
-      render json: @list_item, status: :created, location: @list_item
+      render json: @list_item, status: :created
     else
       render json: @list_item.errors, status: :unprocessable_entity
     end
@@ -28,24 +30,34 @@ class ListItemsController < ProtectedController
 
   # PATCH/PUT /list_items/1
   def update
+    # @list_item = @list.list_items.find(params[:id])
     if @list_item.update(list_item_params)
       render json: @list_item
       head :no_content
     else
-      render json: @list_item.errors, status: :unprocessable_entity
+      render json: @list_item.errors.to_a, status: :unprocessable_entity
     end
   end
 
   # DELETE /list_items/1
   def destroy
-    @list_item.destroy
-    head :no_content
+    # @list_item = @list.list_items.find(params[:id])
+    if @list_item.destroy
+      head :no_content
+      render json: {id: params[:id]}
+    else
+      render json: {id: @list_item.id}, status: :unprocessable_entity
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_list
+      @list = current_user.lists.find(params[:list_id])
+    end
+
     def set_list_item
-      @list_item = current_user.list_items.find(params[:id])
+      @list_item = @list.list_items.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
