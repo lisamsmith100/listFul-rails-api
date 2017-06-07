@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 # TemplateItemsController Class
 class TemplateItemsController < ProtectedController
   before_action :set_template
