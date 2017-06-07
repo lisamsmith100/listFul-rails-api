@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'pry'
 
 # ListItemsController Class
@@ -14,7 +15,7 @@ class ListItemsController < ProtectedController
 
   # GET /list_items/1
   def show
-    # @list_item = @list.list_items.find(params[:id])
+    @list_item = @list.list_items.find(params[:id])
     render json: @list_item
   end
 
@@ -44,24 +45,25 @@ class ListItemsController < ProtectedController
     # @list_item = @list.list_items.find(params[:id])
     if @list_item.destroy
       head :no_content
-      render json: {id: params[:id]}
+      render json: { id: params[:id] }
     else
-      render json: {id: @list_item.id}, status: :unprocessable_entity
+      render json: { id: @list_item.id }, status: :unprocessable_entity
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_list
-      @list = current_user.lists.find(params[:list_id])
-    end
 
-    def set_list_item
-      @list_item = @list.list_items.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_list
+    @list = current_user.lists.find(params[:list_id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def list_item_params
-      params.require(:list_item).permit(:list_item_name, :list_item_category, :list_item_status, :list_item_reminder, :list_item_reminder_date)
-    end
+  def set_list_item
+    @list_item = @list.list_items.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def list_item_params
+    params.require(:list_item).permit(:list_item_name, :list_item_category, :list_item_status, :list_item_reminder, :list_item_reminder_date)
+  end
 end

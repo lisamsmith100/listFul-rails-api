@@ -1,5 +1,5 @@
 #!/bin/bash
-#LIST_ID=9 TOKEN=BAhJIiUxZmY2YzNlZjAyYmRiNzk5ZjRjZmU1OTcyYjczMmUwNAY6BkVG--e8d0602d168324ee35bb26a1b0a344a3c2a267e1 LIST_ITEM_NAME="first list item for first list for user lms" LIST_ITEM_STATUS=false LIST_ITEM_REMINDER=true LIST_ITEM_REMINDER_DATE="2017-06-09" sh scripts/list-items/create-list-item.sh
+#LIST_ID=10 TOKEN=BAhJIiU3ZjY2MzJmZDA5N2QxNWNmNGI1MjQxMTBiODUwNzFiYQY6BkVG--92008ab979ab58104ddea5c18592061374065139 LIST_ITEM_NAME="durian" LIST_ITEM_STATUS=false LIST_ITEM_REMINDER=true LIST_ITEM_REMINDER_DATE="2017-06-09" sh scripts/list-items/create-list-item.sh
 
 #sh scripts/list-items/create-list-item.sh
 
