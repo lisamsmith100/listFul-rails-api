@@ -32,9 +32,17 @@ class ListItemsController < ProtectedController
   # PATCH/PUT /list_items/1
   def update
     # @list_item = @list.list_items.find(params[:id])
-    if @list_item.update(list_item_params)
+    #
+    # if @list_item.update(list_item_params)
+    #   head :no_content
+    # else
+    #   render json: @list_item.errors, status: :unprocessable_entity
+    # end
+    @list_item = @list.list_items.update(list_item_params[:id])
+    # @list_item = @list.list_items.find(params[:id])
+    if @list_item
       render json: @list_item
-      head :no_content
+      # head :no_content
     else
       render json: @list_item.errors.to_a, status: :unprocessable_entity
     end
@@ -42,18 +50,21 @@ class ListItemsController < ProtectedController
 
   # DELETE /list_items/1
   def destroy
+    @list.list_items.find(params[:id]).destroy
     # @list_item = @list.list_items.find(params[:id])
-    if @list_item.destroy
-      head :no_content
-      render json: { id: params[:id] }
-    else
-      render json: { id: @list_item.id }, status: :unprocessable_entity
-    end
+    # if @list.list_items.find(params[:id]).destroy
+    #   head :no_content
+    #   render json: { id: params[:id] }
+    # else
+    #   render json: { id: @list.list_items.find(params[:id]) }, status: :unprocessable_entity
+    # end
+    head :no_content
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
+
   def set_list
     @list = current_user.lists.find(params[:list_id])
   end

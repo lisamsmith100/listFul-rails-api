@@ -6,17 +6,17 @@ Rails.application.routes.draw do
   delete '/sign-out/:id' => 'users#signout'
   patch '/change-password/:id' => 'users#changepw'
 
-  resources :users, only: [:index, :show]
+  resources :users, only: %i[index show]
 
-  resources :lists, except: [:new, :edit] do
-    resources :list_items, except: [:new, :edit]
+  resources :lists, except: %i[new edit] do
+    resources :list_items, except: %i[new edit]
   end
 
   # resources :list_items, only: [:show, :update, :destroy]
 
-  resources :templates, except: [:new, :edit] do
-    resources :template_items, except: [:new, :edit, :show]
+  resources :templates, except: %i[new edit] do
+    resources :template_items, except: %i[new edit]
   end
 
-  resources :examples, except: [:new, :edit]
+  resources :examples, except: %i[new edit]
 end

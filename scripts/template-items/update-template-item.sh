@@ -1,5 +1,5 @@
 #!/bin/bash
-#LIST_ID=9 TOKEN=BAhJIiU0OTczMzcyZjEwMGU4NTk4YWJkNTU0NDgxMGM1YTY0MQY6BkVG--cbb33662ce77525d0b4627048c4d80e64c971a48 ID=1 LIST_ITEM_NAME="updating" sh scripts/list-items/update-list-item.sh
+#TEMPLATE_ID=1 TOKEN=BAhJIiU0OTczMzcyZjEwMGU4NTk4YWJkNTU0NDgxMGM1YTY0MQY6BkVG--cbb33662ce77525d0b4627048c4d80e64c971a48 ID=1 LIST_ITEM_NAME="updating" sh scripts/list-items/update-list-item.sh
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/lists/${LIST_ID}/list_items"
