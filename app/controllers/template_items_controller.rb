@@ -30,7 +30,7 @@ class TemplateItemsController < ProtectedController
   end
 
   # PATCH/PUT /template_items/1
-  def update
+  # def update
   # @template_item = @template.template_items.find(params[:id])
   #
   # if @template_item.update(template_item_params)
@@ -38,15 +38,15 @@ class TemplateItemsController < ProtectedController
   # else
   #   render json: @template_item.errors, status: :unprocessable_entity
   # end
-    @template_item = @template.template_items.update(template_item_params[:id])
+    # @template_item = @template.template_items.update(template_item_params[:id])
     # @template_item = @template.template_items.find(params[:id])
-    if @template_item
-      render json: @template_item
+    # if @template_item
+    #   render json: @template_item
       # head :no_content
-    else
-      render json: @template_item.errors.to_a, status: :unprocessable_entity
-    end
-  end
+  #   else
+  #     render json: @template_item.errors.to_a, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /template_items/1
   def destroy

@@ -30,7 +30,7 @@ class ListItemsController < ProtectedController
   end
 
   # PATCH/PUT /list_items/1
-  def update
+  # def update
     # @list_item = @list.list_items.find(params[:id])
     #
     # if @list_item.update(list_item_params)
@@ -38,15 +38,24 @@ class ListItemsController < ProtectedController
     # else
     #   render json: @list_item.errors, status: :unprocessable_entity
     # end
-    @list_item = @list.list_items.update(list_item_params[:id])
-    # @list_item = @list.list_items.find(params[:id])
-    if @list_item
-      render json: @list_item
+    # @list_item = @list.list_items.update(list_item_params[:id])
+    # # @list_item = @list.list_items.find(params[:id])
+    # if @list_item
+    #  render json: @list_item
       # head :no_content
-    else
-      render json: @list_item.errors.to_a, status: :unprocessable_entity
-    end
-  end
+    # else
+    #   render json: @list_item.errors.to_a, status: :unprocessable_entity
+    # end
+  # def update
+  #   @list_item = List_item.joins(:list).where(lists: {user_id: current_user.id}).find(params[:id])
+  #   # @task = List.joins(:tasks).where(tasks: {id: params[:id]}, lists: {user_id: current_user.id})
+  #
+  #   if @list_item.update_attributes(list_item_params)
+  #     render json: @list_item
+  #   else
+  #     render json: @list_item.errors.to_a, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /list_items/1
   def destroy
