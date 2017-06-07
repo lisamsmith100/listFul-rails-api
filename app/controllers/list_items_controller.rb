@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 # ListItemsController Class
 class ListItemsController < ProtectedController
   before_action :set_list
