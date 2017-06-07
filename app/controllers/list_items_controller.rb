@@ -30,6 +30,15 @@ class ListItemsController < ProtectedController
   end
 
   # PATCH/PUT /list_items/1
+
+  def update
+    if @list.list_items.find(params[:id]).update(list_item_params)
+      head puts list_item_params
+    else
+      render json: @list_item.errors, status: :unprocessable_entity
+    end
+  end
+
   # def update
     # @list_item = @list.list_items.find(params[:id])
     #
