@@ -31,7 +31,7 @@ class ListsController < ProtectedController
   def update
     if @list.update(list_params)
       render json: @list
-      head :no_content
+      # head :no_content
     else
       render json: @list.errors, status: :unprocessable_entity
     end
