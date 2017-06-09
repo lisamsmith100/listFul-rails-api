@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show]
 
   resources :lists, except: %i[new edit] do
-    resources :list_items, except: %i[new edit]
+    # resources :list_items, except: %i[new edit]
   end
 
   # resources :list_items, only: [:show, :update, :destroy]
 
-  resources :templates, except: %i[new edit] do
-    resources :template_items, except: %i[new edit]
-  end
+  # resources :templates, except: %i[new edit] do
+  #   resources :template_items, except: %i[new edit]
+  # end
 
   resources :examples, except: %i[new edit]
 end
